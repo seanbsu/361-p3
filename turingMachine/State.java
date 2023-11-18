@@ -1,8 +1,12 @@
+package turingMachine;
+
+import turingMachine.Transition;
+
 import java.util.ArrayList;
 
 /**
- * A State object for a turing machine with a name, aka the label for the machine in the context of this project is the state number.
- * A State contains its name, a list of its transitions and a boolean to indicate if it's a final state (halt state)
+ * A turingMachine.State object for a turing machine with a name, aka the label for the machine in the context of this project is the state number.
+ * A turingMachine.State contains its name, a list of its transitions and a boolean to indicate if it's a final state (halt state)
  */
 public class State {
     private int name;
@@ -10,7 +14,7 @@ public class State {
     private  ArrayList<Transition> transitions;
 
     /**
-     * Constructor for a State object
+     * Constructor for a turingMachine.State object
      * @param name the name of the state. all states will be integer values
      */
     public State(int name){

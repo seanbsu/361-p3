@@ -1,7 +1,11 @@
+package test.turingMachine;
+
 import org.junit.*;
+import turingMachine.State;
+import turingMachine.Transition;
 
 import static org.junit.Assert.*;
-public class Tester {
+public class TestTM {
 
     @Test
     public void testTransitionConstructor() {

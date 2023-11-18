@@ -1,5 +1,7 @@
+package turingMachine;
+
 /**
- * Tape class to represent the  bi-infinite tape of a Turing Machine
+ * turingMachine.Tape class to represent the  bi-infinite tape of a Turing Machine
  */
 public class Tape {
    private  Node curr, first, last;

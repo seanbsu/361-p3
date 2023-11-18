@@ -1,3 +1,5 @@
+package turingMachine;
+
 public class Transition {
 
     private int read;
@@ -7,7 +9,7 @@ public class Transition {
 
 
     /**
-     * Constructor for a Transition object
+     * Constructor for a turingMachine.Transition object
      * @param read the character to read from the tape
      * @param write the character to write to the tape
      * @param direction the direction to move the tape

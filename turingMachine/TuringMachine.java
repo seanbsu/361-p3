@@ -1,3 +1,5 @@
+package turingMachine;
+
 public class TuringMachine {
 
     public TuringMachine(){
