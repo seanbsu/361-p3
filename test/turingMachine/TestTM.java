@@ -3,6 +3,7 @@ package test.turingMachine;
 import org.junit.*;
 import turingMachine.State;
 import turingMachine.Transition;
+import turingMachine.Tape;
 
 import static org.junit.Assert.*;
 public class TestTM {
@@ -21,5 +22,13 @@ public class TestTM {
         State s = new State(1);
         assertEquals("1", s.toString());
         assertFalse(s.isAccept());
+    }
+
+    @Test
+    public void testPrivateNodeConstructor(){
+        Tape.NodeWrapper nw = new Tape.NodeWrapper(1);
+        assertEquals(1, nw.getValue());
+        assertNull(nw.getLeft());
+        assertNull(nw.getRight());
     }
 }
