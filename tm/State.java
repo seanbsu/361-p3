@@ -1,9 +1,9 @@
 package tm;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * A turingMachine.State object for a turing machine with a name, aka the label for the machine in the context of this project is the state number.
@@ -38,7 +38,7 @@ public class State {
      * @return the list of transitions for this state
      */
     public List<Transition> getTransitions() {
-        return transitions.values().stream().collect(Collectors.toList());
+        return new ArrayList<>(transitions.values());
     }
 
     /**

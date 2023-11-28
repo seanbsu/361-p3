@@ -46,18 +46,18 @@ public class TestTape {
     public void testBiInfinite() {
         String input = "123";
         Tape t = new Tape(input);
-        for(int i = 0; i < input.length(); i++){
+        for (int i = 0; i < input.length(); i++) {
             t.moveLeft();
             assertEquals(0, t.getValue());
         }
-        for(int i = 0; i < input.length(); i++){
+        for (int i = 0; i < input.length(); i++) {
             t.moveRight();
         }
-        for(int i = 0; i < input.length(); i++){
+        for (int i = 0; i < input.length(); i++) {
             assertNotEquals(0, t.getValue());
             t.moveRight();
         }
-        for(int i = 0; i < input.length(); i++){
+        for (int i = 0; i < input.length(); i++) {
             t.moveRight();
             assertEquals(0, t.getValue());
         }

@@ -22,8 +22,8 @@ public class TestState {
     @Test
     public void testAddTransition() {
         State state = new State(1);
-        Transition t1 = new Transition(1, 0, 'R', 3);
-        Transition t2 = new Transition(0, 1, 'L', 2);
+        Transition t1 = new Transition(1, 0, 'R', state);
+        Transition t2 = new Transition(0, 1, 'L', state);
 
         state.addTransition(t1);
         state.addTransition(t2);
@@ -37,8 +37,8 @@ public class TestState {
     @Test
     public void testSetTransitions() {
         State state = new State(1);
-        Transition t1 = new Transition(1, 0, 'R', 3);
-        Transition t2 = new Transition(0, 1, 'L', 2);
+        Transition t1 = new Transition(1, 0, 'R', state);
+        Transition t2 = new Transition(0, 1, 'L', state);
 
         ArrayList<Transition> newTransitions = new ArrayList<>();
         newTransitions.add(t1);

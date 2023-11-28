@@ -4,8 +4,8 @@ public class Transition {
 
     private final int read;
     private final int write;
-    private final int direction;
-    private final int nextState;
+    private final Tape.Direction direction;
+    private final State nextState;
 
 
     /**
@@ -15,11 +15,13 @@ public class Transition {
      * @param write     the character to write to the tape
      * @param direction the direction to move the tape
      */
-    public Transition(int read, int write, char direction, int nextState) {
+    public Transition(int read, int write, char direction, State nextState) {
         this.read = read;
         this.write = write;
-        this.direction = direction;
         this.nextState = nextState;
+        if (direction == 'L') this.direction = Tape.Direction.LEFT;
+        else if (direction == 'R') this.direction = Tape.Direction.RIGHT;
+        else throw new IllegalArgumentException("direction must be 'L' or 'R'");
     }
 
     /**
@@ -27,7 +29,7 @@ public class Transition {
      *
      * @return the next state
      */
-    public int getNextState() {
+    public State getNextState() {
         return nextState;
     }
 
@@ -54,7 +56,7 @@ public class Transition {
      *
      * @return the direction to move the tape
      */
-    public int getDirection() {
+    public Tape.Direction getDirection() {
         return direction;
     }
 

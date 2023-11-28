@@ -5,11 +5,23 @@ import java.util.Map;
 
 public class TuringMachine {
 
+    private Tape tape;
     private final Map<Integer, State> states;
     private int numStates; // needed to look up the highest(halting) state
 
     public TuringMachine() {
         states = new HashMap<>();
+        numStates = 0;
+    }
+
+    /**
+     * Gets the Tape from the last successful run
+     * May return null
+     *
+     * @return the tape from the last run
+     */
+    public Tape getTape() {
+        return tape;
     }
 
     /**
@@ -43,11 +55,22 @@ public class TuringMachine {
     }
 
     /**
-     * Runs the machine with the given input
-     * @param input
+     * Runs the turing machine with the given input
+     *
+     * @param input the input string to be loaded into tape
      * @return true if the machine halted
      */
     public boolean run(String input) {
-        return false;
+        tape = new Tape(input);
+        State current = getStartState();
+
+        Transition nextTrans;
+        while ((nextTrans = current.getTransition(tape.getValue())) != null) { // read until tm halts
+            tape.setValue(nextTrans.getWrite()); // write
+            tape.move(nextTrans.getDirection()); // move
+            current = nextTrans.getNextState(); // go to next state]
+        }
+
+        return current == getHaltState();
     }
 }

@@ -4,7 +4,11 @@ package tm;
  * turingMachine.Tape class to represent the  bi-infinite tape of a Turing Machine
  */
 public class Tape {
-    private Node curr, first, last;
+
+    public enum Direction {LEFT, RIGHT}
+
+    private Node curr;
+    private Node first;
 
     /**
      * Constructor for an empty tape
@@ -13,7 +17,6 @@ public class Tape {
         curr = new Node(0);
         curr.left = curr.right = null;
         first = curr;
-        last = curr;
     }
 
     /**
@@ -27,8 +30,16 @@ public class Tape {
             this.setValue(Character.getNumericValue(input.charAt(i)));
             this.moveRight();
         }
-        if(curr.left != null) curr.left.right = null; // remove trailing node
+        if (curr.left != null) curr.left.right = null; // remove trailing node
         curr = first;
+    }
+
+    public void move(Direction dir) {
+        if (dir == Direction.LEFT) {
+            moveLeft();
+        } else if (dir == Direction.RIGHT) {
+            moveRight();
+        }
     }
 
     /**
@@ -38,7 +49,6 @@ public class Tape {
         if (curr.right == null) {
             curr.right = new Node(0);
             curr.right.left = curr;
-            last = curr.right;
         }
         curr = curr.right;
     }
