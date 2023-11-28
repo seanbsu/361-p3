@@ -68,7 +68,7 @@ public class TuringMachine {
         while ((nextTrans = current.getTransition(tape.getValue())) != null) { // read until tm halts
             tape.setValue(nextTrans.getWrite()); // write
             tape.move(nextTrans.getDirection()); // move
-            current = nextTrans.getNextState(); // go to next state]
+            current = nextTrans.getNextState(); // go to next state
         }
 
         return current == getHaltState();
