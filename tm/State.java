@@ -1,6 +1,4 @@
-package turingMachine;
-
-import turingMachine.Transition;
+package tm;
 
 import java.util.ArrayList;
 
@@ -11,65 +9,79 @@ import java.util.ArrayList;
 public class State {
     private int name;
     private boolean accept;
-    private  ArrayList<Transition> transitions;
+    private ArrayList<Transition> transitions;
 
     /**
      * Constructor for a turingMachine.State object
+     *
      * @param name the name of the state. all states will be integer values
      */
-    public State(int name){
+    public State(int name) {
         this.name = name;
     }
 
     /**
-     *  Add a transition to the list of transitions for this state
+     * Add a transition to the list of transitions for this state
+     *
      * @param t the transition to add
      */
-    public void addTransition(Transition t){
+    public void addTransition(Transition t) {
         transitions.add(t);
     }
 
     /**
      * Method to get the state's transition list
+     *
      * @return the list of transitions for this state
      */
-    public ArrayList<Transition> getTransitions(){
+    public ArrayList<Transition> getTransitions() {
         return transitions;
     }
 
     /**
      * Method to set the states transition list from a predefined list of transitions
+     *
      * @param transitions the list of transitions to set
      */
-    public void setTransitions(ArrayList<Transition> transitions){
+    public void setTransitions(ArrayList<Transition> transitions) {
         this.transitions = transitions;
     }
 
     /**
      * Method to set whether this state is the accept state or not
+     *
      * @param accept true if this state is the accept state, false otherwise
      */
-    public void setAccept(boolean accept){
+    public void setAccept(boolean accept) {
         this.accept = accept;
     }
 
     /**
      * Method to check if this state is an accept state or not
+     *
      * @return true if this state is an accept state, false otherwise
      */
-    public boolean isAccept(){
+    public boolean isAccept() {
         return accept;
     }
 
     /**
-     * Method to get the name of this state
-     * @return the name of this state
+     * Method to get the name of this state as a string
+     *
+     * @return the name of this state as a string
      */
     @Override
-    public String toString(){
-        return ""+ name;
+    public String toString() {
+        return "" + name;
     }
 
 
-
+    /**
+     * Method to get the name of this state as an int
+     *
+     * @return the name of this state
+     */
+    public int getName() {
+        return name;
+    }
 }

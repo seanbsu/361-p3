@@ -1,4 +1,4 @@
-package turingMachine;
+package tm;
 
 /**
  * turingMachine.Tape class to represent the  bi-infinite tape of a Turing Machine

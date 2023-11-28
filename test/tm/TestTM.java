@@ -1,9 +1,9 @@
-package test.turingMachine;
+package test.tm;
 
 import org.junit.*;
-import turingMachine.State;
-import turingMachine.Transition;
-import turingMachine.Tape;
+import tm.State;
+import tm.Transition;
+import tm.Tape;
 
 import java.util.ArrayList;
 
