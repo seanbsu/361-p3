@@ -42,7 +42,12 @@ public class TuringMachine {
         return states.get(numStates - 1);
     }
 
-    public void run(String input) {
-
+    /**
+     * Runs the machine with the given input
+     * @param input
+     * @return true if the machine halted
+     */
+    public boolean run(String input) {
+        return false;
     }
 }
