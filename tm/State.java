@@ -1,15 +1,17 @@
 package tm;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * A turingMachine.State object for a turing machine with a name, aka the label for the machine in the context of this project is the state number.
  * A turingMachine.State contains its name, a list of its transitions and a boolean to indicate if it's a final state (halt state)
  */
 public class State {
-    private int name;
-    private boolean accept;
-    private ArrayList<Transition> transitions;
+    private final int name; // state label
+    private final Map<Integer, Transition> transitions;
 
     /**
      * Constructor for a turingMachine.State object
@@ -18,6 +20,7 @@ public class State {
      */
     public State(int name) {
         this.name = name;
+        transitions = new HashMap<>();
     }
 
     /**
@@ -26,7 +29,7 @@ public class State {
      * @param t the transition to add
      */
     public void addTransition(Transition t) {
-        transitions.add(t);
+        transitions.put(t.getRead(), t);
     }
 
     /**
@@ -34,8 +37,8 @@ public class State {
      *
      * @return the list of transitions for this state
      */
-    public ArrayList<Transition> getTransitions() {
-        return transitions;
+    public List<Transition> getTransitions() {
+        return transitions.values().stream().collect(Collectors.toList());
     }
 
     /**
@@ -43,26 +46,9 @@ public class State {
      *
      * @param transitions the list of transitions to set
      */
-    public void setTransitions(ArrayList<Transition> transitions) {
-        this.transitions = transitions;
-    }
-
-    /**
-     * Method to set whether this state is the accept state or not
-     *
-     * @param accept true if this state is the accept state, false otherwise
-     */
-    public void setAccept(boolean accept) {
-        this.accept = accept;
-    }
-
-    /**
-     * Method to check if this state is an accept state or not
-     *
-     * @return true if this state is an accept state, false otherwise
-     */
-    public boolean isAccept() {
-        return accept;
+    public void setTransitions(List<Transition> transitions) {
+        this.transitions.clear();
+        transitions.forEach(this::addTransition);
     }
 
     /**
@@ -83,5 +69,15 @@ public class State {
      */
     public int getName() {
         return name;
+    }
+
+    /**
+     * Gets the transition with a given read symbol
+     *
+     * @param symbol read symbol
+     * @return transition with read symbol, null if not present
+     */
+    public Transition getTransition(int symbol) {
+        return transitions.get(symbol);
     }
 }

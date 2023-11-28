@@ -6,8 +6,10 @@ import tm.Transition;
 import tm.Tape;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
+
 public class TestTM {
 
     @Test
@@ -23,19 +25,18 @@ public class TestTM {
     public void testStateConstructor() {
         State s = new State(1);
         assertEquals("1", s.toString());
-        assertFalse(s.isAccept());
     }
+
     @Test
     public void testAddTransition() {
         State state = new State(1);
         Transition t1 = new Transition(1, 0, 'R', 3);
         Transition t2 = new Transition(0, 1, 'L', 2);
-        ArrayList<Transition> transitionsList = new ArrayList<>();
-        transitionsList.add(t1);
-        state.setTransitions(transitionsList);
+
+        state.addTransition(t1);
         state.addTransition(t2);
 
-        ArrayList<Transition> transitions = state.getTransitions();
+        List<Transition> transitions = state.getTransitions();
         assertEquals(2, transitions.size());
         assertTrue(transitions.contains(t1));
         assertTrue(transitions.contains(t2));
@@ -53,22 +54,10 @@ public class TestTM {
 
         state.setTransitions(newTransitions);
 
-        ArrayList<Transition> transitions = state.getTransitions();
+        List<Transition> transitions = state.getTransitions();
         assertEquals(2, transitions.size());
         assertTrue(transitions.contains(t1));
         assertTrue(transitions.contains(t2));
-    }
-
-    @Test
-    public void testSetAccept() {
-        State state = new State(1);
-        assertFalse(state.isAccept());
-
-        state.setAccept(true);
-        assertTrue(state.isAccept());
-
-        state.setAccept(false);
-        assertFalse(state.isAccept());
     }
 
     @Test
@@ -81,7 +70,7 @@ public class TestTM {
 
 
     @Test
-    public void testPrivateNodeConstructor(){
+    public void testPrivateNodeConstructor() {
         Tape.NodeWrapper nw = new Tape.NodeWrapper(1);
         assertEquals(1, nw.getValue());
         assertNull(nw.getLeft());

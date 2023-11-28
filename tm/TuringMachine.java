@@ -42,7 +42,7 @@ public class TuringMachine {
         return states.get(numStates - 1);
     }
 
-    public static void run() {
+    public void run(String input) {
 
     }
 }
