@@ -46,7 +46,7 @@ public class TMSimulator {
     }
 
     public static void main(String[] args) {
-        //System.out.println(simulate(args[0]));
-        System.out.println(simulate("file0.txt"));
+        System.out.println(simulate(args[0]));
+        // System.out.println(simulate("file0.txt"));
     }
 }
