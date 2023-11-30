@@ -18,8 +18,11 @@ Fall Semester, 2023
  In the terminal navigate to source code directory and enter the command
    
    ```
-   ./run.sh
+   javac tm/*.java
    ```
-
+then run
+```
+java tm.TMSimulator <Filename>
+```
 ## General Reflection 
 
