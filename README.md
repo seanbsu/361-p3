@@ -25,4 +25,6 @@ then run
 java tm.TMSimulator <Filename>
 ```
 ## General Reflection 
+### Sean
+I found this project was interesting to create the Turing Machine and to try and do it efficiently. For the Tape class I was trying to find the most efficient data structure to use to increase the speed of the program. After some thought and discussion with Kaden we determined that a  modified doubly linked list would be the be the best to use since we only need to at most move 1 direction. Overall the project was fun to work with.
 
