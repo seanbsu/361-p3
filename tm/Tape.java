@@ -10,13 +10,13 @@ public class Tape {
     private Node curr;
     private Node first;
 
+    private int pos, posMax;
+
     /**
      * Constructor for an empty tape
      */
     public Tape() {
-        curr = new Node(0);
-        curr.left = curr.right = null;
-        first = curr;
+        this("");
     }
 
     /**
@@ -25,13 +25,17 @@ public class Tape {
      * @param input the initial input on the tape
      */
     public Tape(String input) {
-        this();
+        curr = new Node(0);
+        curr.left = curr.right = null;
+        first = curr;
         for (int i = 0; i < input.length(); i++) {
             this.setValue(Character.getNumericValue(input.charAt(i)));
             this.moveRight();
         }
         if (curr.left != null) curr.left.right = null; // remove trailing node
         curr = first;
+        pos = 0;
+        posMax = 0;
     }
 
     public void move(Direction dir) {
@@ -51,6 +55,8 @@ public class Tape {
             curr.right.left = curr;
         }
         curr = curr.right;
+        pos++;
+        if (pos > posMax) posMax = pos;
     }
 
     /**
@@ -61,7 +67,8 @@ public class Tape {
             curr.left = new Node(0);
             curr.left.right = curr;
             first = curr.left;
-        }
+            posMax++;
+        } else pos--;
         curr = curr.left;
     }
 
@@ -86,14 +93,18 @@ public class Tape {
     /**
      * Get the contents of the tape at the current position
      */
-    public String toString() {
+    public String toString(boolean visitedOnly) {
         Node temp = this.first;
         StringBuilder sb = new StringBuilder();
-        while (temp != null) {
+        for (int i = 0; !(visitedOnly && i > posMax || temp == null); i++) {
             sb.append(temp.value);
             temp = temp.right;
         }
         return sb.toString();
+    }
+
+    public String toString() {
+        return toString(false);
     }
 
     /**

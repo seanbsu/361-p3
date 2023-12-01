@@ -91,6 +91,22 @@ public class TestTape {
     }
 
     @Test
+    public void testToStringTrue(){
+        Tape t = new Tape("100101");
+        t.moveRight();
+        t.moveRight();
+        t.moveLeft();
+        t.moveLeft();
+        t.moveLeft();
+        t.moveRight();
+        t.moveRight();
+        t.moveRight();
+        t.moveRight();
+        t.moveLeft();
+        assertEquals("01001", t.toString(true));
+    }
+
+    @Test
     public void testPrivateNodeConstructor() {
         Tape.NodeWrapper nw = new Tape.NodeWrapper(1);
         assertEquals(1, nw.getValue());

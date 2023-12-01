@@ -42,7 +42,7 @@ public class TMSimulator {
         }
 
         tm.run(input);
-        return tm.getTape().toString();
+        return tm.getTape().toString(true);
     }
 
     public static void main(String[] args) {
