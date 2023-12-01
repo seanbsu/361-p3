@@ -96,4 +96,74 @@ public class TestTM {
         assertTrue(tm.run("111"));
         assertEquals("1111111", tm.getTape().toString());
     }
+
+    @Test
+    public void testFile2(){
+        TuringMachine tm = new TuringMachine();
+        State[] states = new State[5];
+        for (int i = 0; i < 5; i++) {
+            states[i] = new State(i);
+        }
+        states[0].addTransition(new Transition(0, 1, 'L', states[2]));
+        states[0].addTransition(new Transition(1, 2, 'L', states[4]));
+        states[0].addTransition(new Transition(2, 0, 'L', states[1]));
+        states[0].addTransition(new Transition(3, 0, 'L', states[3]));
+        states[1].addTransition(new Transition(0, 3, 'R', states[3]));
+        states[1].addTransition(new Transition(1, 3, 'L', states[3]));
+        states[1].addTransition(new Transition(2, 3, 'L', states[3]));
+        states[1].addTransition(new Transition(3, 1, 'R', states[1]));
+        states[2].addTransition(new Transition(0, 3, 'L', states[1]));
+        states[2].addTransition(new Transition(1, 3, 'L', states[2]));
+        states[2].addTransition(new Transition(2, 1, 'R', states[0]));
+        states[2].addTransition(new Transition(3, 1, 'R', states[2]));
+        states[3].addTransition(new Transition(0, 1, 'R', states[0]));
+        states[3].addTransition(new Transition(1, 0, 'R', states[1]));
+        states[3].addTransition(new Transition(2, 2, 'R', states[0]));
+        states[3].addTransition(new Transition(3, 2, 'R', states[2]));
+        for (int i = 0; i < 5; i++) {
+            tm.addState(states[i]);
+        }
+
+        assertTrue(tm.run(""));
+        String output = tm.getTape().toString(true);
+        assertEquals(140, output.length());
+        int sum = 0;
+        for(int i = 0; i < output.length(); i++){
+            sum += Character.digit(output.charAt(i), 10);
+        }
+        assertEquals(414, sum);
+    }
+
+    @Test
+    public void testFile5(){
+        TuringMachine tm = new TuringMachine();
+        State[] states = new State[4];
+        for (int i = 0; i < 4; i++) {
+            states[i] = new State(i);
+        }
+        states[0].addTransition(new Transition(0, 3, 'R', states[1]));
+        states[0].addTransition(new Transition(1, 0, 'R', states[0]));
+        states[0].addTransition(new Transition(2, 0, 'L', states[2]));
+        states[0].addTransition(new Transition(3, 2, 'L', states[2]));
+        states[1].addTransition(new Transition(0, 1, 'L', states[2]));
+        states[1].addTransition(new Transition(1, 0, 'R', states[2]));
+        states[1].addTransition(new Transition(2, 3, 'L', states[1]));
+        states[1].addTransition(new Transition(3, 2, 'R', states[2]));
+        states[2].addTransition(new Transition(0, 3, 'R', states[0]));
+        states[2].addTransition(new Transition(1, 0, 'R', states[1]));
+        states[2].addTransition(new Transition(2, 3, 'R', states[3]));
+        states[2].addTransition(new Transition(3, 0, 'L', states[1]));
+        for (int i = 0; i < 4; i++) {
+            tm.addState(states[i]);
+        }
+
+        assertTrue(tm.run(""));
+        String output = tm.getTape().toString(true);
+        assertEquals(20430, output.length());
+        int sum = 0;
+        for(int i = 0; i < output.length(); i++){
+            sum += Character.digit(output.charAt(i), 10);
+        }
+        assertEquals(47189, sum);
+    }
 }
